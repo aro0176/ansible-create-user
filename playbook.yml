@@ -1,0 +1,12 @@
+--- 
+ - name: Automatisation de la Création utilisateur
+   hosts: node
+   remote_user: "{{ utilisateur }}"
+   become: yes
+   vars:
+     user : "{{ new_user }}"
+
+   roles: 
+     - Update
+     - creation
+...

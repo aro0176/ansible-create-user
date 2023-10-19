@@ -1,0 +1,21 @@
+---
+ - name: Création d'un utilisateur
+   when: user is defined
+   user:
+     name: "{{ new }}"
+     comment: "'{{ comments }}'"
+     shell: /usr/bin/zsh
+
+ - name: Ajout clé ssh
+   when: user is defined
+   authorized_key:
+     user: "{{ new }}"
+     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+ - name: "{{ new }} devient sudoers"
+   when: user is defined
+   template:
+     src: sudoers.j2
+     dest: /etc/sudoers.d/{{ new }}-sudoer
+     validate: visudo -cf %s
+...

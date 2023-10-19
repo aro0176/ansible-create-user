@@ -1,0 +1,4 @@
+---
+ new: "{{ new_user }}"
+ comments : "{{ commentaire }}"
+...

@@ -1,0 +1,17 @@
+---
+ - name: Mise à jour Système famille Ubun ou Deb
+   apt:
+     update_cache: yes
+   when: os_family == "Ubuntu"
+
+ - name: Mise à Jour système famille RedHat
+   yum:
+     update_cache: yes
+   when: os_family == "RedHat"
+
+ - name: Mise à jour Système autre famille
+   apt:
+     update_cache: yes
+   when: not (os_family == "Ubuntu" or os_family == "RedHat")
+
+...
