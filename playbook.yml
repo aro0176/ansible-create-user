@@ -3,6 +3,7 @@
    hosts: node
    remote_user: "{{ utilisateur }}"
    become: yes
+   become_method: sudo
    vars:
      user : "{{ new_user }}"
 
